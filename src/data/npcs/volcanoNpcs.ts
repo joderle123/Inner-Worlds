@@ -1,0 +1,732 @@
+// ============================================================
+// INNER WORLDS – Volcano Island NPCs (Wut / Anger)
+// 4 NPCs with deep, relatable stories for 10-15 year olds
+// ============================================================
+import type { NPC } from '@/types/game';
+
+export const volcanoNpcs: NPC[] = [
+  // --- KAI (13, männlich) ---
+  {
+    id: 'kai',
+    name: 'Kai',
+    alter: 13,
+    islandId: 'vulkan',
+    aussehen: 'Dunkle Haare, verschränkte Arme, geballte Fäuste. Trägt ein zerknittertes T-Shirt. Sieht aus, als hätte er nicht geschlafen.',
+    emotion: 'wut',
+    schmerz: 'Kais Eltern trennen sich. Gestern hat er seinen besten Freund Liam angeschrien, weil der einen Witz gemacht hat. Jetzt spricht Liam nicht mehr mit ihm. Kai schämt sich – aber die Scham fühlt sich wie noch mehr Wut an.',
+    geheimnis: 'Kais Vater schreit auch immer. Kai hat panische Angst, wie sein Vater zu werden.',
+    verbindung: {
+      npcId: 'liam',
+      islandId: 'garten',
+      beschreibung: 'Kais bester Freund Liam taucht als NPC auf der Garten-Insel auf.',
+    },
+    szenen: [
+      {
+        nummer: 1,
+        titel: 'Der Streit',
+        beschreibung: 'Kai steht allein am Rand des Vulkans, Fäuste geballt.',
+        dialogues: [
+          { sprecher: 'Kai', text: '*starrt auf den Vulkan* Siehst du das? Der Vulkan brüllt den ganzen Tag. Und niemand hört hin.', emotion: 'wut' },
+          { sprecher: 'Kai', text: 'Ich bin wie der Vulkan. Ich explodiere einfach. Ohne Vorwarnung.' },
+          { sprecher: 'Kai', text: 'Gestern... hab ich Liam angeschrien. Meinen besten Freund. Er hat nur einen blöden Witz gemacht, und ich bin ausgerastet.' },
+          { sprecher: 'Kai', text: 'Jetzt redet er nicht mehr mit mir. Und das Schlimmste? Ich bin IMMER NOCH wütend.', emotion: 'wut' },
+        ],
+        choices: [
+          {
+            id: 'kai_1a',
+            text: 'Das klingt wirklich schwer. Erzähl mir mehr.',
+            skillEffects: { empathie: 2, einsicht: 1 },
+            konsequenz: 'Kai öffnet sich langsam.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: '...du willst wirklich zuhören? Die meisten sagen einfach: "Beruhig dich."' },
+              { sprecher: 'Kai', text: 'Okay. Es ist... seit meine Eltern sich trennen, ist alles zu viel. Jeder kleine Fehler fühlt sich an wie eine Explosion.' },
+            ],
+            vorteile: 'Kai fühlt sich gehört und öffnet sich',
+            nachteile: 'Dauert länger, bis der Kern kommt',
+          },
+          {
+            id: 'kai_1b',
+            text: 'Was hat Liam gesagt, das dich so wütend gemacht hat?',
+            skillEffects: { einsicht: 2, mut: 1 },
+            konsequenz: 'Kai denkt nach – und merkt, dass der Witz nicht das Problem war.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: 'Er hat gesagt... *überlegt* ...er hat gesagt "Hey Kai, alles cool bei dir?" Und ich bin explodiert.' },
+              { sprecher: 'Kai', text: 'Warte. Das war gar kein blöder Witz. Er hat gefragt, ob es mir gut geht. Und ich... oh man.', emotion: 'trauer' },
+            ],
+            vorteile: 'Kai erkennt die wahre Ursache schneller',
+            nachteile: 'Kai fühlt sich zunächst angegriffen',
+          },
+          {
+            id: 'kai_1c',
+            text: 'Wut ist nicht immer schlecht. Manchmal zeigt sie, dass dir etwas wichtig ist.',
+            skillEffects: { einsicht: 1, resilienz: 2 },
+            konsequenz: 'Kai ist überrascht – niemand hat das je so formuliert.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: '...wichtig? Liam ist mir wichtig, ja. Aber ich hab ihn angeschrien!' },
+              { sprecher: 'Kai', text: 'Meinst du... die Wut kam, WEIL er mir wichtig ist? Weil ich Angst hab, ihn zu verlieren? So wie... alles gerade auseinanderfällt?' },
+            ],
+            vorteile: 'Tiefe Einsicht – Kai versteht die Funktion von Wut',
+            nachteile: 'Kai könnte Wut rechtfertigen statt regulieren',
+          },
+        ],
+      },
+      {
+        nummer: 2,
+        titel: 'Die Mauer',
+        beschreibung: 'Kai will zu Liam gehen, aber die Wut blockiert ihn.',
+        dialogues: [
+          { sprecher: 'Kai', text: 'Ich will mich entschuldigen. Bei Liam. Aber jedes Mal, wenn ich daran denke, wird mir heiß. Als ob der Vulkan in MIR ausbrechen würde.' },
+          { sprecher: 'Kai', text: 'Was, wenn er mich auslacht? Was, wenn er sagt "Du bist genau wie dein-" ...egal.' },
+          { sprecher: 'Kai', text: 'Ich will hin, aber meine Füße bewegen sich nicht. Es ist, als ob die Wut eine Mauer um mich gebaut hat.' },
+        ],
+        choices: [
+          {
+            id: 'kai_2a',
+            text: 'Ich verstehe, dass du wütend bist. Lass uns reden.',
+            skillEffects: { empathie: 2, einsicht: 1 },
+            konsequenz: 'Kai öffnet sich, aber der Prozess dauert länger.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: 'Reden... *schluckt* Okay. Aber ich weiß nicht, wo ich anfangen soll.' },
+              { sprecher: 'Kai', text: 'Alles fühlt sich gleichzeitig an. Wut, Scham, Angst, Trauer. Wie soll ich DAS in Worte fassen?' },
+            ],
+            vorteile: 'Kai fühlt sich validiert',
+            nachteile: 'Dauert länger, bis Kai handeln kann',
+          },
+          {
+            id: 'kai_2b',
+            text: 'Du hast das Recht, wütend zu sein. Aber Liam hat auch Gefühle.',
+            skillEffects: { einsicht: 2, mut: 1 },
+            konsequenz: 'Kai fühlt sich erst angegriffen, versteht dann aber.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: '*verschränkt Arme* Du verteidigst Liam?', emotion: 'wut' },
+              { sprecher: 'Kai', text: '...nein. Du hast recht. Liam hat nichts Falsches gemacht. Er hat gefragt, wie es mir geht. Und ich hab ihn dafür bestraft.' },
+              { sprecher: 'Kai', text: 'Weil... weil es einfacher ist, wütend zu sein als zuzugeben, dass es mir schlecht geht.', emotion: 'trauer' },
+            ],
+            vorteile: 'Kai erkennt die tiefere Wahrheit',
+            nachteile: 'Kai fühlt sich zunächst angegriffen',
+          },
+          {
+            id: 'kai_2c',
+            text: 'Willst du, dass ich mit Liam rede?',
+            skillEffects: { mut: 2, empathie: 1 },
+            konsequenz: 'Funktioniert kurzfristig, aber Kai muss langfristig selbst handeln.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: 'Würdest du das tun? ...nein. Warte. Nein.' },
+              { sprecher: 'Kai', text: 'Das ist mein Chaos. Ich muss es selbst aufräumen. Aber... danke, dass du es angeboten hast.' },
+            ],
+            vorteile: 'Kai lernt Eigenverantwortung',
+            nachteile: 'Kann als "Übernahme" wirken',
+          },
+          {
+            id: 'kai_2d',
+            text: 'Vielleicht ist es besser, wenn du dich erst beruhigst.',
+            skillEffects: { einsicht: 1 },
+            konsequenz: 'Praktischer Rat, aber Kai fühlt sich abgewimmelt.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: '*seufzt* Ja, das sagen alle. "Beruhig dich erst." Aber WIE?', emotion: 'wut' },
+              { sprecher: 'Kai', text: 'Wie beruhigt man sich, wenn alles in einem brennt?' },
+            ],
+            vorteile: 'Praktisch und richtig',
+            nachteile: 'Kai fühlt sich abgewimmelt',
+          },
+        ],
+      },
+      {
+        nummer: 3,
+        titel: 'Die Wahrheit',
+        beschreibung: 'Kai enthüllt sein Geheimnis.',
+        isGeheimnis: true,
+        dialogues: [
+          { sprecher: 'Kai', text: 'Ich muss dir was sagen. Was ich vorhin abgebrochen habe.' },
+          { sprecher: 'Kai', text: 'Mein Vater... er schreit. Immer. Bei allem. Wenn das Essen nicht fertig ist, wenn ich eine schlechte Note hab, wenn Mama was sagt.' },
+          { sprecher: 'Kai', text: 'Und gestern, als ich Liam angeschrien hab... hab ich mich selbst gehört. Und ich klang genau wie er.', emotion: 'angst' },
+          { sprecher: 'Kai', text: 'Ich habe so eine Angst. Angst, dass ich so werde wie mein Vater. Dass das in mir drin ist. Wie ein Vulkan, den ich nicht kontrollieren kann.' },
+        ],
+        choices: [
+          {
+            id: 'kai_3a',
+            text: 'Dass du das erkennst, zeigt, dass du NICHT wie er bist.',
+            skillEffects: { einsicht: 2, empathie: 2 },
+            konsequenz: 'Kai hört den wichtigsten Satz seines Lebens.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: '*stutzt* ...was?' },
+              { sprecher: 'Kai', text: 'Mein Vater hat sich nie gefragt, ob er zu laut ist. Nie. Er findet es normal.' },
+              { sprecher: 'Kai', text: 'Aber ich... ich schäme mich. Ich will es anders machen. Das... das ist anders, oder?', emotion: 'trauer' },
+            ],
+            vorteile: 'Kraftvoller therapeutischer Moment',
+            nachteile: 'Könnte vereinfachend wirken',
+          },
+          {
+            id: 'kai_3b',
+            text: 'Du bist nicht dein Vater. Du bist Kai. Und Kai hat die Wahl.',
+            skillEffects: { mut: 2, resilienz: 2 },
+            konsequenz: 'Kai beginnt, sich von seinem Vater zu differenzieren.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: 'Die Wahl... Glaubst du wirklich, dass ich wählen kann? Dass die Wut nicht automatisch kommt?' },
+              { sprecher: 'Kai', text: 'Dass ich... dass ich ANDERS sein kann?' },
+            ],
+            vorteile: 'Empowerment und Differenzierung',
+            nachteile: 'Könnte die Komplexität vereinfachen',
+          },
+          {
+            id: 'kai_3c',
+            text: 'Das klingt wirklich beängstigend. Hast du jemandem davon erzählt?',
+            skillEffects: { empathie: 2, mut: 1 },
+            konsequenz: 'Kai denkt über Hilfe nach.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: 'Nein. Wem denn? Mama hat genug Probleme. Und meine Freunde... die würden denken, ich bin schwach.' },
+              { sprecher: 'Kai', text: 'Aber... du hörst zu. Das ist schon mehr, als ich erwartet hab.' },
+            ],
+            vorteile: 'Öffnet den Weg zu professioneller Hilfe',
+            nachteile: 'Kai könnte sich überfordert fühlen',
+          },
+        ],
+      },
+      {
+        nummer: 4,
+        titel: 'Der Brief',
+        beschreibung: 'Kai formuliert einen Brief an Liam.',
+        dialogues: [
+          { sprecher: 'Kai', text: 'Ich will Liam einen Brief schreiben. Nicht eine Nachricht. Einen echten Brief. Auf Papier.' },
+          { sprecher: 'Kai', text: 'Aber... was schreibt man, wenn man sagen will: "Es tut mir leid. Nicht, weil ich wütend war – sondern weil ich dich dafür bestraft hab, dass du nach mir gefragt hast"?' },
+          { sprecher: 'Kai', text: 'Hilf mir. Bitte.' },
+        ],
+        choices: [
+          {
+            id: 'kai_4a',
+            text: 'Fang an mit dem, was du wirklich fühlst. Nicht mit einer Entschuldigung.',
+            skillEffects: { einsicht: 2, empathie: 1, mut: 1 },
+            konsequenz: 'Kai schreibt von Herzen.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: '*schreibt langsam* "Lieber Liam. Ich hab dich angeschrien, und du hast es nicht verdient."' },
+              { sprecher: 'Kai', text: '"Du hast gefragt, wie es mir geht. Und die Wahrheit ist: Schlecht. Aber ich wusste nicht, wie ich das sagen soll. Also hab ich geschrien."' },
+              { sprecher: 'Kai', text: '"Du bist der beste Freund, den ich habe. Und ich hab Angst, dich zu verlieren. Kai."' },
+              { sprecher: 'Kai', text: '*legt den Stift hin* Wow. Das war... ich hab noch nie so was geschrieben.' },
+            ],
+            vorteile: 'Emotionale Tiefe und Authentizität',
+            nachteile: 'Keine',
+          },
+          {
+            id: 'kai_4b',
+            text: 'Schreib ihm, was du über dich selbst gelernt hast.',
+            skillEffects: { einsicht: 2, resilienz: 2 },
+            konsequenz: 'Kai reflektiert über seinen Wachstum.',
+            followUpDialogues: [
+              { sprecher: 'Kai', text: '*schreibt* "Liam, ich habe was über mich herausgefunden."' },
+              { sprecher: 'Kai', text: '"Ich habe Angst, wie mein Vater zu werden. Und als du gefragt hast, wie es mir geht, war ich nicht wütend auf dich. Ich war wütend auf mich."' },
+              { sprecher: 'Kai', text: '"Aber jemand hat mir gesagt: Dass ich diese Angst habe, bedeutet, dass ich NICHT so bin wie er."' },
+              { sprecher: 'Kai', text: '*blickt auf* Meinst du, Liam wird das verstehen?' },
+            ],
+            vorteile: 'Tiefe Selbstreflexion',
+            nachteile: 'Könnte zu viel Verantwortung auf Kai laden',
+          },
+        ],
+      },
+    ],
+    weisheitskarte: {
+      id: 'weisheit_kai',
+      titel: 'Das Feuer in dir',
+      zitat: 'Wut zeigt dir, was dir wichtig ist. Sie ist nicht dein Feind – unkontrollierte Wut schon.',
+      therapeutischeTechnik: 'Emotionsregulation: Wut als Signal verstehen, nicht als Feind bekämpfen',
+      kategorie: 'einsicht',
+      bildBeschreibung: 'Ein Vulkan, dessen Lava in warmes Licht übergeht. An seinen Hängen wachsen Blumen.',
+      islandId: 'vulkan',
+    },
+  },
+
+  // --- MIRA (14, weiblich) ---
+  {
+    id: 'mira',
+    name: 'Mira',
+    alter: 14,
+    islandId: 'vulkan',
+    aussehen: 'Zusammengezogene Augenbrauen, nervöse Hände. Perfekt gebundener Pferdeschwanz – alles andere an ihr wirkt chaotisch.',
+    emotion: 'wut',
+    schmerz: 'Wird wütend auf sich selbst bei jedem Fehler. Hat ihr Tablet zerbrochen nach einer schlechten Note. Alle sagen, sie sei "zu dramatisch."',
+    geheimnis: 'Ihre ältere Schwester Leonie ist "perfekt" – Einser-Schülerin, beliebt, sportlich. Mira fühlt sich unsichtbar.',
+    verbindung: {
+      npcId: 'leonie',
+      islandId: 'berg',
+      beschreibung: 'Miras ältere Schwester Leonie taucht auf der Berg-Insel auf.',
+    },
+    szenen: [
+      {
+        nummer: 1,
+        titel: 'Scherben',
+        beschreibung: 'Mira sitzt zwischen den Scherben ihres zerbrochenen Tablets.',
+        dialogues: [
+          { sprecher: 'Mira', text: '*sitzt auf dem Boden, starrt auf Scherben* Ich hab es wieder gemacht. Ich hab es einfach... geworfen.', emotion: 'wut' },
+          { sprecher: 'Mira', text: 'Eine 4 in Mathe. EINE VIER. Leonie hat NIE eine 4. Leonie hat nie was Schlechteres als eine 2.' },
+          { sprecher: 'Mira', text: 'Meine Eltern sagen, das ist nicht schlimm. Aber ich seh ihre Gesichter. Enttäuschung. Oder noch schlimmer: Mitleid.' },
+          { sprecher: 'Mira', text: 'Alle sagen, ich bin zu dramatisch. Aber wisst ihr, was dramatisch ist? Jeden Tag gegen jemanden zu verlieren, der in deinem eigenen Haus lebt.' },
+        ],
+        choices: [
+          {
+            id: 'mira_1a',
+            text: 'Eine 4 ist nicht das Ende der Welt. Was genau macht dich so wütend daran?',
+            skillEffects: { einsicht: 2, empathie: 1 },
+            konsequenz: 'Mira denkt nach.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: 'Die Note ist mir egal. Also... nicht egal. Aber es ist nicht die Note.' },
+              { sprecher: 'Mira', text: 'Es ist das Gefühl, dass ich nie gut GENUG bin. Egal was ich mache. Leonie ist immer besser.' },
+            ],
+            vorteile: 'Hilft Mira, die wahre Ursache zu sehen',
+            nachteile: 'Könnte wie Bagatellisierung wirken',
+          },
+          {
+            id: 'mira_1b',
+            text: 'Du bist nicht dramatisch. Du bist frustriert. Das ist was anderes.',
+            skillEffects: { empathie: 2, resilienz: 1 },
+            konsequenz: 'Mira fühlt sich zum ersten Mal verstanden.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: '*blinzelt* ...frustriert?' },
+              { sprecher: 'Mira', text: 'Ja. Ja, genau. Frustriert. Nicht dramatisch. Frustriert. Danke, dass du das siehst.' },
+            ],
+            vorteile: 'Validierung – Mira fühlt sich gesehen',
+            nachteile: 'Geht nicht tief genug in die Ursache',
+          },
+          {
+            id: 'mira_1c',
+            text: 'Erzähl mir mehr über Leonie.',
+            skillEffects: { einsicht: 1, mut: 1 },
+            konsequenz: 'Mira beginnt, über die Vergleichsdynamik nachzudenken.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: 'Leonie? Die ist... perfekt. Wirklich. Nicht fake-perfekt. ECHT perfekt.' },
+              { sprecher: 'Mira', text: 'Und ich liebe sie. Und ich hasse sie. Gleichzeitig. Und ich hasse mich dafür, dass ich sie hasse.' },
+            ],
+            vorteile: 'Öffnet das Kernthema',
+            nachteile: 'Kann schmerzhafte Vergleiche verstärken',
+          },
+        ],
+      },
+      {
+        nummer: 2,
+        titel: 'Der Vergleich',
+        beschreibung: 'Mira spricht über den ständigen Vergleich.',
+        dialogues: [
+          { sprecher: 'Mira', text: 'Weißt du, was das Schlimmste ist? Leonie ist nicht mal gemein zu mir. Sie ist sogar nett. Sie HILFT mir bei den Hausaufgaben.' },
+          { sprecher: 'Mira', text: 'Und trotzdem will ich schreien, wenn sie sagt: "Mira, das ist doch einfach! Schau, so geht das."' },
+          { sprecher: 'Mira', text: 'Weil ALLES einfach ist für sie. Und NICHTS ist einfach für mich.' },
+        ],
+        choices: [
+          {
+            id: 'mira_2a',
+            text: 'Was kannst DU, was Leonie nicht kann?',
+            skillEffects: { einsicht: 2, resilienz: 1 },
+            konsequenz: 'Mira überlegt – und findet etwas.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: '...ich? Ich kann... *denkt lange nach*' },
+              { sprecher: 'Mira', text: 'Ich kann zeichnen. Wirklich gut sogar. Aber das zählt ja nicht für Noten.' },
+              { sprecher: 'Mira', text: 'Oder... zählt es?' },
+            ],
+            vorteile: 'Stärkenbasiertes Denken',
+            nachteile: 'Könnte wie "Trostpreis" wirken',
+          },
+          {
+            id: 'mira_2b',
+            text: 'Vielleicht ist es gar kein Vergleich. Vielleicht willst du einfach gesehen werden.',
+            skillEffects: { empathie: 2, einsicht: 2 },
+            konsequenz: 'Mira wird still. Dieser Satz sitzt.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: '*lange Pause*' },
+              { sprecher: 'Mira', text: '...gesehen werden. Ja. Das ist es. Ich will nicht BESSER sein als Leonie. Ich will einfach... AUCH gesehen werden.' },
+              { sprecher: 'Mira', text: 'Nicht als "Leonies kleine Schwester." Sondern als Mira.' },
+            ],
+            vorteile: 'Trifft den Kern – emotionaler Durchbruch',
+            nachteile: 'Kann überwältigend sein',
+          },
+        ],
+      },
+      {
+        nummer: 3,
+        titel: 'Der Druck',
+        beschreibung: 'Mira enthüllt, wie sehr sie sich selbst unter Druck setzt.',
+        isGeheimnis: true,
+        dialogues: [
+          { sprecher: 'Mira', text: 'Ich muss dir was zeigen.' },
+          { sprecher: 'Mira', text: '*zeigt eine Liste* Das ist mein Tagesplan. Aufstehen: 5:30. Lernen bis 7. Schule. Nachmittags noch 3 Stunden lernen. Sport. Mehr lernen. Schlafen um 23 Uhr.' },
+          { sprecher: 'Mira', text: 'Ich mache das seit einem Jahr. Jeden Tag. Und ich werde trotzdem nicht so gut wie Leonie.' },
+          { sprecher: 'Mira', text: 'Weißt du, was wirklich dramatisch ist? Nicht, dass ich mein Tablet zerbrochen hab. Sondern dass ich jeden Tag um 5:30 aufstehe, um jemand zu werden, der ich nicht bin.', emotion: 'trauer' },
+        ],
+        choices: [
+          {
+            id: 'mira_3a',
+            text: 'Mira... das ist kein Fleiß. Das ist Krieg gegen dich selbst.',
+            skillEffects: { einsicht: 2, empathie: 2, mut: 1 },
+            konsequenz: 'Mira bricht in Tränen aus. Endlich.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: '*Tränen* Krieg gegen mich selbst... ja. Genau so fühlt es sich an.' },
+              { sprecher: 'Mira', text: 'Und ich verliere jeden Tag.' },
+              { sprecher: 'Mira', text: 'Aber wenn ich aufhöre zu kämpfen... was bleibt dann von mir?' },
+            ],
+            vorteile: 'Durchbruch – Mira erkennt den Selbstzerstörungskreislauf',
+            nachteile: 'Kann starke Emotionen auslösen',
+          },
+          {
+            id: 'mira_3b',
+            text: 'Was wäre, wenn du diesen Plan nicht für eine Woche machst? Was würde passieren?',
+            skillEffects: { mut: 2, achtsamkeit: 1 },
+            konsequenz: 'Mira konfrontiert ihre Angst.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: 'Nicht machen? *panisch* Dann falle ich noch weiter zurück!', emotion: 'angst' },
+              { sprecher: 'Mira', text: 'Oder... würde ich? Was wäre, wenn eine Woche nichts ändert? Was sagt DAS dann über den Plan?' },
+            ],
+            vorteile: 'Verhaltensexperiment – CBT-Technik',
+            nachteile: 'Könnte Angst auslösen',
+          },
+        ],
+      },
+      {
+        nummer: 4,
+        titel: 'Der neue Plan',
+        beschreibung: 'Mira beginnt, sich selbst anders zu sehen.',
+        dialogues: [
+          { sprecher: 'Mira', text: 'Ich hab nachgedacht. Über alles. Über Leonie. Über den Plan. Über mich.' },
+          { sprecher: 'Mira', text: 'Und ich glaube... ich war so beschäftigt damit, Leonie einzuholen, dass ich vergessen habe, Mira zu sein.' },
+          { sprecher: 'Mira', text: 'Mira, die zeichnen kann. Mira, die lustig ist. Mira, die... die vielleicht eine 4 in Mathe hat, aber dafür Bilder malt, bei denen Leute stehen bleiben.' },
+        ],
+        choices: [
+          {
+            id: 'mira_4a',
+            text: 'Was wäre dein Plan, wenn er nicht darum geht, Leonie einzuholen?',
+            skillEffects: { einsicht: 2, resilienz: 2, empathie: 1 },
+            konsequenz: 'Mira schreibt einen neuen Plan.',
+            followUpDialogues: [
+              { sprecher: 'Mira', text: '*lächelt zum ersten Mal* Aufstehen: 7 Uhr. Schule. Danach: Eine Stunde zeichnen. DANN lernen.' },
+              { sprecher: 'Mira', text: 'Und wenn ich eine 4 bekomme... dann bekomme ich eine 4. Und das Tablet bleibt heil.' },
+              { sprecher: 'Mira', text: 'Danke. Für alles. Ich glaube... ich glaube, ich muss auch mit Leonie reden. Ihr sagen, wie ich mich fühle. Nicht wütend. Sondern ehrlich.' },
+            ],
+            vorteile: 'Ganzheitliche Lösung',
+            nachteile: 'Keine',
+          },
+        ],
+      },
+    ],
+    weisheitskarte: {
+      id: 'weisheit_mira',
+      titel: 'Dein eigener Maßstab',
+      zitat: 'Vergleiche dich nicht mit anderen. Vergleiche dich mit dir von gestern.',
+      therapeutischeTechnik: 'Kognitive Umstrukturierung: Unrealistische Vergleiche erkennen und durch eigene Maßstäbe ersetzen',
+      kategorie: 'resilienz',
+      bildBeschreibung: 'Zwei verschiedene Blumen nebeneinander – beide schön, aber völlig anders.',
+      islandId: 'vulkan',
+    },
+  },
+
+  // --- DARIO (12, männlich) ---
+  {
+    id: 'dario',
+    name: 'Dario',
+    alter: 12,
+    islandId: 'vulkan',
+    aussehen: 'Klein für sein Alter, aber kräftige Haltung. Blaue Fleck am Arm. Trägt ein oversized Hoodie.',
+    emotion: 'wut',
+    schmerz: 'Wird in der Schule gemobbt, weil er klein ist. Hat einmal zurückgeschlagen – jetzt ist ER der Böse. Der Mobber geht frei aus.',
+    geheimnis: 'Er zeichnet einen Comic über einen Helden, der Konflikte mit Worten löst. Schämt sich dafür.',
+    verbindung: {
+      npcId: 'jasper',
+      islandId: 'regenbogen',
+      beschreibung: 'Darios Comicheld inspiriert Jasper auf der Regenbogen-Insel.',
+    },
+    szenen: [
+      {
+        nummer: 1,
+        titel: 'Ungerechtigkeit',
+        beschreibung: 'Dario ist wütend über die Ungerechtigkeit.',
+        dialogues: [
+          { sprecher: 'Dario', text: 'Sie haben MICH bestraft. MICH! *ballt Fäuste*', emotion: 'wut' },
+          { sprecher: 'Dario', text: 'Der Typ – Marco – der schubst mich seit MONATEN. Jeden Tag. "Hey Zwerg, wie ist das Wetter da unten?" Jeden. Einzelnen. Tag.' },
+          { sprecher: 'Dario', text: 'Einmal, EIN einziges Mal, hab ich zurückgeschlagen. Und jetzt bin ich der, der zum Direktor muss.' },
+          { sprecher: 'Dario', text: 'Und Marco? Marco lacht. Weil er immer lacht. Weil er damit durchkommt.' },
+        ],
+        choices: [
+          {
+            id: 'dario_1a',
+            text: 'Das ist wirklich unfair. Du hast das Recht, wütend zu sein.',
+            skillEffects: { empathie: 2, mut: 1 },
+            konsequenz: 'Dario fühlt sich validiert.',
+            followUpDialogues: [
+              { sprecher: 'Dario', text: '*überrascht* Du... du sagst nicht, dass ich nicht hätte schlagen sollen?' },
+              { sprecher: 'Dario', text: 'Alle sagen das. "Gewalt ist keine Lösung." Aber wisst ihr, was AUCH keine Lösung ist? Nichtstun. Und zugucken. Jeden Tag.' },
+            ],
+            vorteile: 'Validierung der Wut – nicht der Gewalt',
+            nachteile: 'Könnte als Rechtfertigung verstanden werden',
+          },
+          {
+            id: 'dario_1b',
+            text: 'Hat jemand versucht, dir zu helfen, bevor du zurückgeschlagen hast?',
+            skillEffects: { einsicht: 2, empathie: 1 },
+            konsequenz: 'Dario erkennt die systemische Ungerechtigkeit.',
+            followUpDialogues: [
+              { sprecher: 'Dario', text: 'Helfen? *lacht bitter* Ich war dreimal beim Lehrer. Drei. Mal.' },
+              { sprecher: 'Dario', text: 'Jedes Mal: "Ignorier ihn einfach." "Geh ihm aus dem Weg." "Er meint es nicht so."' },
+              { sprecher: 'Dario', text: 'Die Erwachsenen haben mich im Stich gelassen. Also hab ich mich selbst verteidigt. Und DAFÜR werde ich bestraft.' },
+            ],
+            vorteile: 'Zeigt die systemische Dimension',
+            nachteile: 'Könnte Hilflosigkeit verstärken',
+          },
+        ],
+      },
+      {
+        nummer: 2,
+        titel: 'Die Stärke',
+        beschreibung: 'Dario hinterfragt, was "stark sein" bedeutet.',
+        dialogues: [
+          { sprecher: 'Dario', text: 'Alle reden von "sich wehren." Aber wie? Wenn ich zurückschlage, bin ich der Böse. Wenn ich nichts tue, bin ich der Schwache.' },
+          { sprecher: 'Dario', text: 'Was soll ich MACHEN? Gibt es überhaupt eine richtige Antwort?' },
+        ],
+        choices: [
+          {
+            id: 'dario_2a',
+            text: 'Manchmal gibt es keine perfekte Antwort. Aber es gibt deinen Weg.',
+            skillEffects: { einsicht: 2, resilienz: 1 },
+            konsequenz: 'Dario denkt über seinen eigenen Weg nach.',
+            followUpDialogues: [
+              { sprecher: 'Dario', text: 'Meinen Weg... *denkt nach* Ich hab da was. Aber du darfst nicht lachen.' },
+            ],
+            vorteile: 'Öffnet den Weg zum Geheimnis',
+            nachteile: 'Keine',
+          },
+          {
+            id: 'dario_2b',
+            text: 'Stark sein heißt nicht zuschlagen. Stark sein heißt, nicht aufzugeben.',
+            skillEffects: { mut: 2, resilienz: 1 },
+            konsequenz: 'Dario ist skeptisch, aber hört zu.',
+            followUpDialogues: [
+              { sprecher: 'Dario', text: 'Nicht aufgeben... Ich hab nicht aufgegeben. Drei Mal zum Lehrer, erinnerst du dich?' },
+              { sprecher: 'Dario', text: 'Vielleicht muss ich nur... einen anderen Weg finden.' },
+            ],
+            vorteile: 'Reframing von Stärke',
+            nachteile: 'Könnte platitude wirken',
+          },
+        ],
+      },
+      {
+        nummer: 3,
+        titel: 'Der Comic',
+        beschreibung: 'Dario enthüllt sein Geheimnis.',
+        isGeheimnis: true,
+        dialogues: [
+          { sprecher: 'Dario', text: '*zieht zögernd ein Heft hervor* Ich hab da was... Ich zeichne. Comics.', emotion: 'angst' },
+          { sprecher: 'Dario', text: 'Es geht um einen Helden. "Verbalo." Er ist klein – wie ich. Aber er löst Konflikte nicht mit Fäusten. Sondern mit Worten. Mit den RICHTIGEN Worten.' },
+          { sprecher: 'Dario', text: 'In einer Geschichte besiegt Verbalo einen Riesen. Nicht durch Kampf. Sondern indem er ihm eine Frage stellt, die so gut ist, dass der Riese aufhört zu kämpfen und anfängt nachzudenken.' },
+          { sprecher: 'Dario', text: 'Das ist dumm, oder? Ein Held, der REDET statt kämpft. Das ist nicht cool. Das ist...', emotion: 'angst' },
+        ],
+        choices: [
+          {
+            id: 'dario_3a',
+            text: 'Das ist das Coolste, was ich je gehört habe.',
+            skillEffects: { empathie: 2, mut: 2 },
+            konsequenz: 'Dario leuchtet auf.',
+            followUpDialogues: [
+              { sprecher: 'Dario', text: '*blickt auf* ...echt?' },
+              { sprecher: 'Dario', text: 'Du findest einen Helden, der REDET, cool?' },
+              { sprecher: 'Dario', text: 'Weißt du... vielleicht ist Verbalo der Held, den ich selbst gerne wäre. Jemand, der die richtigen Worte findet, statt die Fäuste.' },
+            ],
+            vorteile: 'Stärkt Darios verborgene Identität',
+            nachteile: 'Keine',
+          },
+          {
+            id: 'dario_3b',
+            text: 'Dario, du BIST Verbalo. Du hast nur noch nicht die richtige Frage gefunden.',
+            skillEffects: { einsicht: 2, mut: 2, resilienz: 1 },
+            konsequenz: 'Dario wird still. Dieser Moment verändert ihn.',
+            followUpDialogues: [
+              { sprecher: 'Dario', text: '*lange Pause*' },
+              { sprecher: 'Dario', text: 'Ich bin Verbalo... *wischt sich die Augen* Okay. Okay, dann... dann muss ich die richtige Frage für Marco finden.' },
+            ],
+            vorteile: 'Tiefe Identifikation mit dem eigenen Helden',
+            nachteile: 'Keine',
+          },
+        ],
+      },
+      {
+        nummer: 4,
+        titel: 'Die richtige Frage',
+        beschreibung: 'Dario findet seinen Weg.',
+        dialogues: [
+          { sprecher: 'Dario', text: 'Ich hab nachgedacht. Über Verbalo. Über Marco. Über mich.' },
+          { sprecher: 'Dario', text: 'Die richtige Frage für Marco ist nicht "Warum mobbst du mich?" Das weiß er selbst nicht.' },
+          { sprecher: 'Dario', text: 'Die richtige Frage ist: "Was passiert bei DIR zu Hause, dass du jeden Tag jemand Kleineren fertigmachen musst?"' },
+          { sprecher: 'Dario', text: 'Nicht als Angriff. Sondern als echte Frage. Weil... vielleicht ist Marco auch ein Vulkan. Einer, den niemand fragt, warum er brüllt.' },
+        ],
+        choices: [
+          {
+            id: 'dario_4a',
+            text: 'Das ist Verbalos beste Geschichte.',
+            skillEffects: { empathie: 2, einsicht: 2, mut: 1 },
+            konsequenz: 'Dario lächelt.',
+            followUpDialogues: [
+              { sprecher: 'Dario', text: '*grinst* Ja. Und weißt du was? Ich werde sie aufschreiben. Und vielleicht... vielleicht zeige ich sie jemandem.' },
+              { sprecher: 'Dario', text: 'Einem Lehrer. Oder meinen Eltern. Nicht als Beschwerde – als Geschichte. Als eine Geschichte über einen kleinen Helden, der gelernt hat, dass die stärkste Waffe ein Wort ist.' },
+            ],
+            vorteile: 'Ganzheitliche Lösung durch Kreativität',
+            nachteile: 'Keine',
+          },
+        ],
+      },
+    ],
+    weisheitskarte: {
+      id: 'weisheit_dario',
+      titel: 'Die richtige Frage',
+      zitat: 'Die stärkste Waffe ist nicht die Faust. Es ist die Frage, die den anderen zum Nachdenken bringt.',
+      therapeutischeTechnik: 'Perspektivwechsel und gewaltfreie Kommunikation: Empathie als Stärke, nicht als Schwäche',
+      kategorie: 'mut',
+      bildBeschreibung: 'Ein kleiner Held mit einem Buch statt einem Schwert, der vor einem Riesen steht.',
+      islandId: 'vulkan',
+    },
+  },
+
+  // --- YUKI (11, non-binär) ---
+  {
+    id: 'yuki',
+    name: 'Yuki',
+    alter: 11,
+    islandId: 'vulkan',
+    aussehen: 'Ruhige Augen, ordentliche Kleidung. Sieht aus wie die "ruhige" Person in der Gruppe. Hände zittern leicht.',
+    emotion: 'wut',
+    schmerz: 'Immer der/die Mediator/in in Freundesgruppen. Unterdrückt eigene Wut, um den Frieden zu bewahren. Ist bei einem Gruppenprojekt explodiert.',
+    geheimnis: 'Yuki glaubt, kein Recht auf Wut zu haben, weil "sie der/die Ruhige" ist.',
+    verbindung: {
+      npcId: 'alina',
+      islandId: 'ozean',
+      beschreibung: 'Yukis Gruppenprojekt-Partnerin Alina taucht auf der Ozean-Insel auf.',
+    },
+    szenen: [
+      {
+        nummer: 1,
+        titel: 'Die Explosion',
+        beschreibung: 'Yuki erzählt von dem Moment, als alles herausbrach.',
+        dialogues: [
+          { sprecher: 'Yuki', text: 'Alle kennen mich als die ruhige Person. Die, die schlichten kann. Die, die immer versteht.', emotion: 'trauer' },
+          { sprecher: 'Yuki', text: 'Letzte Woche, beim Gruppenprojekt. Ich hab alles gemacht. ALLES. Die anderen haben geredet, gelacht, sich gestritten. Und ich hab ihre Arbeit mitgemacht.' },
+          { sprecher: 'Yuki', text: 'Und dann hat Alina gesagt: "Danke Yuki, dass du immer so entspannt bist!" Und ich bin... explodiert.', emotion: 'wut' },
+          { sprecher: 'Yuki', text: 'Ich hab geschrien. Zum ersten Mal. Und alle haben mich angestarrt. Als hätte ich etwas Verbotenes getan.' },
+        ],
+        choices: [
+          {
+            id: 'yuki_1a',
+            text: 'Auch ruhige Menschen dürfen wütend werden.',
+            skillEffects: { empathie: 2, einsicht: 1 },
+            konsequenz: 'Yuki hört den Satz, den sie am meisten brauchen.',
+            followUpDialogues: [
+              { sprecher: 'Yuki', text: 'Dürfen? *schluckt* Ich... ich glaube, ich hatte mir das verboten. Wütend zu sein. Weil... weil dann niemand mehr zu mir kommt.' },
+              { sprecher: 'Yuki', text: 'Wenn ich wütend bin, bin ich nicht mehr nützlich. Und wenn ich nicht nützlich bin... braucht mich dann noch jemand?' },
+            ],
+            vorteile: 'Validierung – Erlaubnis zu fühlen',
+            nachteile: 'Kann Angst vor Verlust auslösen',
+          },
+          {
+            id: 'yuki_1b',
+            text: 'Klingt so, als hättest du lange geschwiegen. Was hat dich dazu gebracht?',
+            skillEffects: { einsicht: 2, empathie: 1 },
+            konsequenz: 'Yuki reflektiert über das Muster.',
+            followUpDialogues: [
+              { sprecher: 'Yuki', text: 'Geschwiegen... ja. Weil jedes Mal, wenn ich was sage, sagen alle: "Oh, Yuki ist sauer? Das muss wirklich schlimm sein!"' },
+              { sprecher: 'Yuki', text: 'Und dann fühle ich mich schuldig. Weil ICH derjenige bin, der die Gruppe zusammenhält. Wenn ich wütend bin, bricht alles auseinander.' },
+            ],
+            vorteile: 'Erkennt die Rolle, in die sie gedrängt werden',
+            nachteile: 'Kann Verantwortungsgefühl verstärken',
+          },
+        ],
+      },
+      {
+        nummer: 2,
+        titel: 'Die Rolle',
+        beschreibung: 'Yuki hinterfragt die eigene Rolle.',
+        dialogues: [
+          { sprecher: 'Yuki', text: 'Ich bin immer für alle da. IMMER. Wenn jemand streitet, komme ich. Wenn jemand traurig ist, höre ich zu.' },
+          { sprecher: 'Yuki', text: 'Aber wer ist für MICH da? Wer fragt MICH, wie es mir geht?' },
+          { sprecher: 'Yuki', text: 'Niemand. Weil alle denken, mir geht es immer gut. Weil ich die Ruhige bin. Die Starke.' },
+        ],
+        choices: [
+          {
+            id: 'yuki_2a',
+            text: 'Wie geht es dir gerade, Yuki? Wirklich?',
+            skillEffects: { empathie: 3 },
+            konsequenz: 'Yuki bricht zusammen – im positiven Sinne.',
+            followUpDialogues: [
+              { sprecher: 'Yuki', text: '*Tränen* Niemand fragt das. Nie.', emotion: 'trauer' },
+              { sprecher: 'Yuki', text: 'Mir geht es... nicht gut. Schon lange nicht. Aber ich darf das nicht zeigen. Weil dann alle Angst haben.' },
+              { sprecher: 'Yuki', text: 'Danke. Dass du fragst. Das... das alleine hilft schon.' },
+            ],
+            vorteile: 'Kraftvoller Moment – Yuki fühlt sich zum ersten Mal gesehen',
+            nachteile: 'Keine',
+          },
+          {
+            id: 'yuki_2b',
+            text: 'Es ist nicht dein Job, alle zusammenzuhalten.',
+            skillEffects: { einsicht: 2, mut: 1 },
+            konsequenz: 'Yuki hinterfragt die aufgezwungene Rolle.',
+            followUpDialogues: [
+              { sprecher: 'Yuki', text: 'Nicht mein Job? Aber wenn ICH es nicht mache, wer dann?' },
+              { sprecher: 'Yuki', text: '...oh. Vielleicht müssen die anderen lernen, es SELBST zu machen. Und vielleicht darf ich auch mal... derjenige sein, der Hilfe BRAUCHT.' },
+            ],
+            vorteile: 'Grenzen setzen lernen',
+            nachteile: 'Kann Schuldgefühle auslösen',
+          },
+        ],
+      },
+      {
+        nummer: 3,
+        titel: 'Das Recht',
+        beschreibung: 'Yuki erkennt: Jeder hat das Recht auf Wut.',
+        isGeheimnis: true,
+        dialogues: [
+          { sprecher: 'Yuki', text: 'Ich hab was verstanden. Etwas, das wehtut, aber wahr ist.' },
+          { sprecher: 'Yuki', text: 'Ich glaube, ich habe mir SELBST verboten, wütend zu sein. Nicht die anderen. Ich.' },
+          { sprecher: 'Yuki', text: 'Weil ich dachte: Wenn ich wütend bin, bin ich wie alle anderen. Und dann bin ich nichts Besonderes mehr. Dann bin ich nicht mehr der Fels.' },
+          { sprecher: 'Yuki', text: 'Aber ein Fels hat keine Gefühle. Und ich... ich will keine Rolle spielen. Ich will ein Mensch sein. Mit allen Gefühlen. Auch den lauten.', emotion: 'trauer' },
+        ],
+        choices: [
+          {
+            id: 'yuki_3a',
+            text: 'Du musst kein Fels sein. Du darfst ein Mensch sein.',
+            skillEffects: { empathie: 2, einsicht: 2 },
+            konsequenz: 'Yuki lässt los.',
+            followUpDialogues: [
+              { sprecher: 'Yuki', text: 'Ein Mensch sein... mit Rissen und Wut und Tränen und allem.' },
+              { sprecher: 'Yuki', text: 'Ja. Das will ich. Und ich glaube, die Gruppe überlebt das. Und wenn nicht... dann war die Gruppe nicht echt.' },
+            ],
+            vorteile: 'Befreiung von der aufgezwungenen Rolle',
+            nachteile: 'Keine',
+          },
+        ],
+      },
+      {
+        nummer: 4,
+        titel: 'Die neue Stimme',
+        beschreibung: 'Yuki lernt, Grenzen zu setzen.',
+        dialogues: [
+          { sprecher: 'Yuki', text: 'Ich habe beschlossen: Beim nächsten Gruppenprojekt sage ich was. Nicht erst, wenn ich explodiere. Sondern vorher.' },
+          { sprecher: 'Yuki', text: 'Ich sage: "Ich brauche Hilfe. Nicht weil ich es nicht kann. Sondern weil es unfair ist, wenn ich alles alleine mache."' },
+          { sprecher: 'Yuki', text: 'Und wenn sie sagen "Aber du bist doch immer so entspannt!" – dann sage ich: "Nein. Ich bin müde. Und ich verdiene es, dass jemand MICH fragt, wie es mir geht."' },
+          { sprecher: 'Yuki', text: 'Danke. Dass du der Erste warst, der gefragt hat.' },
+        ],
+        choices: [
+          {
+            id: 'yuki_4a',
+            text: 'Das ist mutig, Yuki. Richtig mutig.',
+            skillEffects: { mut: 2, empathie: 1, resilienz: 1 },
+            konsequenz: 'Yuki lächelt – zum ersten Mal ehrlich.',
+            followUpDialogues: [
+              { sprecher: 'Yuki', text: '*lächelt* Mutig... Ich hab nie gedacht, dass Grenzen setzen mutig ist. Ich dachte, das ist egoistisch.' },
+              { sprecher: 'Yuki', text: 'Aber es ist nicht egoistisch, für sich selbst einzustehen. Es ist... notwendig.' },
+            ],
+            vorteile: 'Stärkung und Abschluss',
+            nachteile: 'Keine',
+          },
+        ],
+      },
+    ],
+    weisheitskarte: {
+      id: 'weisheit_yuki',
+      titel: 'Der stille Vulkan',
+      zitat: 'Immer für andere da zu sein, ohne auf dich selbst zu achten, ist kein Geschenk. Es ist ein langsamer Vulkanausbruch.',
+      therapeutischeTechnik: 'Grenzen setzen: Die Balance zwischen Für-andere-da-sein und Selbstfürsorge finden',
+      kategorie: 'empathie',
+      bildBeschreibung: 'Ein ruhiger See, der leise dampft – unter der stillen Oberfläche brodelt Wärme.',
+      islandId: 'vulkan',
+    },
+  },
+];
