@@ -4,62 +4,11 @@
 import { useState, useCallback } from 'react';
 import { useGameStore } from '@/stores/gameStore';
 import { companions } from '@/data/companions/companions';
+import { getNpcById } from '@/data/npcs';
 import DialoguePanel from '@/components/ui/DialoguePanel';
 import TransferPromptPanel from '@/components/ui/TransferPromptPanel';
 import WisdomCardDisplay from '@/components/ui/WisdomCardDisplay';
-import type { SceneChoice, DialogueLine, SELSkill } from '@/types/game';
-
-// Placeholder NPC data loader (will be populated when NPC files are ready)
-function getNPCData(npcId: string) {
-  // This will be replaced with actual NPC data imports
-  return {
-    name: npcId,
-    szenen: [
-      {
-        nummer: 1 as const,
-        titel: 'Begegnung',
-        beschreibung: '',
-        dialogues: [
-          { sprecher: npcId, text: `Hallo... ich bin ${npcId}. Hast du kurz Zeit?` },
-          { sprecher: npcId, text: 'Ich muss dir etwas erzählen. Etwas, das mich beschäftigt.' },
-        ] as DialogueLine[],
-        choices: [
-          {
-            id: 'zuhoeren',
-            text: 'Natürlich. Ich höre dir zu.',
-            skillEffects: { empathie: 2, einsicht: 1 } as Partial<Record<SELSkill, number>>,
-            konsequenz: 'Der NPC öffnet sich.',
-            followUpDialogues: [
-              { sprecher: npcId, text: 'Danke... das bedeutet mir viel.' },
-            ] as DialogueLine[],
-            vorteile: 'NPC fühlt sich gehört',
-            nachteile: 'Dauert länger',
-          },
-          {
-            id: 'fragen',
-            text: 'Was ist passiert?',
-            skillEffects: { einsicht: 2, mut: 1 } as Partial<Record<SELSkill, number>>,
-            konsequenz: 'Direkte Nachfrage.',
-            followUpDialogues: [
-              { sprecher: npcId, text: 'Okay, ich erzähle es dir...' },
-            ] as DialogueLine[],
-            vorteile: 'Schneller zum Kern',
-            nachteile: 'NPC fühlt sich gedrängt',
-          },
-        ] as SceneChoice[],
-      },
-    ],
-    weisheitskarte: {
-      id: `wisdom_${npcId}`,
-      titel: 'Weisheit',
-      zitat: 'Jeder Schritt zählt.',
-      therapeutischeTechnik: 'Aktives Zuhören',
-      kategorie: 'empathie' as SELSkill,
-      bildBeschreibung: 'Eine leuchtende Karte',
-      islandId: 'vulkan' as const,
-    },
-  };
-}
+import type { NPC, SceneChoice, SELSkill } from '@/types/game';
 
 export default function ScenarioView() {
   const {
@@ -78,7 +27,7 @@ export default function ScenarioView() {
 
   const npcId = progress.currentNPC;
   const companion = companions.find((c) => c.id === progress.companionId);
-  const npcData = npcId ? getNPCData(npcId) : null;
+  const npcData: NPC | undefined = npcId ? getNpcById(npcId) : undefined;
 
   const currentScene = npcData?.szenen[currentSceneIndex];
 
